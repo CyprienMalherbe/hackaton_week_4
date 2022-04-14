@@ -1,3 +1,4 @@
+/* PAGE */
 body {
   height: max-content;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -14,13 +15,13 @@ a {
   color: #FF4C4E;
 }
 
+/* HEADER */
 .menu {
   display: flex;
   background-color: white;
   justify-content: space-between;
   text-align: center;
   padding: 20px;
-
 }
 
 .sous-menu {
@@ -35,20 +36,40 @@ a {
 .nav-text {
   font-size: 16px;
   font-weight: bold;
-  color: grey;
+  color: rgb(106, 106, 106);
+  opacity: 0.7;
+  transition: 0.2s;
 }
 
 .nav-text:hover {
   color: #FF4C4E;
+  opacity: 1;
 }
 
-
+/* FORMS */ 
 .form {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
+/* search page */
+.inline-form {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
 
+.form-group-inline{
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+
+}
+
+
+/* General */
 
 h3 {
   color: white;
@@ -59,5 +80,13 @@ h3 {
   border-color: #FF4C4E !important;
 }
 
+.oops-row {
+  margin-top: 40px;
+  color: white;
+}
+
+.oops-btn {
+  margin-top: 25px;
+}
 
 

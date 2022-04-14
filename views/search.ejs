@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
   <!-- MENU NAVIGATION -->
   <div class="menu">
     <div class="sous-menu">
@@ -32,29 +33,40 @@
 
       <!-- SEARCH -->
       <div class="col-12 offset-lg-3 col-lg-6 text-center">
-        <form class="form">
+
+        <div  class="form">
+
           <h3 class="text-white">Sign-In :</h3>
-          <div class="form-group">
-            <label for="exampleInputEmail1"></label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="departure-city" placeholder="Email"
-              aria-describedby="emailHelp">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1"></label>
-            <input type="password" class="form-control" placeholder="Password" name="arrival-city" id="exampleInputPassword1">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1"></label>
-            <input type="date" class="form-control" placeholder="Password" name="date-departure" id="exampleInputPassword2">
-          </div>
-          <button type="submit" class="btn btn-primary">Confirm</button>
-        </form>
+
+          <form class="inline-form" action="/search" method="POST">
+            <div class="form-group-inline">
+              <label for="exampleInputEmail1"></label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="departure-city" placeholder="Email"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="form-group-inline">
+              <label for="exampleInputPassword1"></label>
+              <input type="password" class="form-control" placeholder="Password" name="arrival-city"
+                id="exampleInputPassword1">
+            </div>
+            <div class="form-group-inline">
+              <label for="exampleInputPassword1"></label>
+              <input type="date" class="form-control" placeholder="Password" name="date-departure"
+                id="exampleInputPassword2">
+            </div>
+            <div class="form-group-inline">
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+          </form>
+          
+        </div>
+        
       </div>
-
-
+      
+      
     </div> <!-- close main row -->
   </div> <!-- close container -->
-
+  
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>

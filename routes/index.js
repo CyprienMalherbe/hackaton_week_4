@@ -29,6 +29,9 @@ router.get('/search', async function(req, res, next) {
   res.render('search', { dataJourney });
 });
 
+router.get('/oops', function(req, res, next) {
+  res.render('oops', { title: 'Express' });
+});
 
 // Cette route est juste une verification du Save.
 // Vous pouvez choisir de la garder ou la supprimer.
