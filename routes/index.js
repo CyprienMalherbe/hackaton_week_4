@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/search', function(req, res, next) {
+  res.render('search', { title: 'Express' });
+});
+
 
 router.get('/search', async function(req, res, next) {
   var departureCity = "Marseille"; //req.body.departureCity
