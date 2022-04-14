@@ -26,11 +26,10 @@ router.get('/search', async function(req, res, next) {
   });
   aggregateCitiesArrival.sort({"_id.arrivalCity" : 1});
   var dataCitiesArrival = await aggregateCitiesArrival.exec();
-console.log(dataCitiesDeparture);
   res.render('search', {dataCitiesDeparture, dataCitiesArrival});
 });
 
-router.post('/result-search', async function(req, res, next) {
+router.post('/search-result', async function(req, res, next) {
   var departureCity = req.body.departureCity;
   var arrivalCity = req.body.arrivalCity;
   var departureDate = new Date(req.body.dateDeparture+"T00:00:00.000Z");
@@ -39,8 +38,6 @@ router.post('/result-search', async function(req, res, next) {
   aggregateJourney.match({"departure":departureCity, "arrival":arrivalCity, "date":departureDate});
   aggregateJourney.sort({"departureTime" : -1});
   var dataJourney = await aggregateJourney.exec();
-
-  console.log(dataJourney);
 
   res.render('search-result', { dataJourney });
 });

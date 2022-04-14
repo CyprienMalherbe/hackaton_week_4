@@ -33,7 +33,7 @@
 
       <!-- SEARCH -->
       <div class="col-12 offset-lg-3 col-lg-6 text-center">
-        <form class="form" action="/result-search" method="POST">
+        <form class="form" action="/search-result" method="POST">
 
           <h3 class="text-white">Sign-In :</h3>
 
@@ -62,11 +62,20 @@
         </form>
 
         <datalist id="departureCities">
-          <%for (i in dataCitiesDeparture) { %>
+          <%for (var i in dataCitiesDeparture) { %>
             <option>
               <%=dataCitiesDeparture[i]._id.departureCity%>
             </option>
             <%}%>
+        </datalist>
+
+        <datalist id="arrivalCities">
+         <%for (var i in dataCitiesArrival) { %>
+           <option>
+             <%=dataCitiesArrival[i]._id.arrivalCity%>
+           </option>
+           <%}%>
+        </datalist>
 
 
       </div>
