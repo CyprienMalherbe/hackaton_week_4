@@ -65,11 +65,25 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
-
 }
 
+/* CARDS */
+.tile {
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  background-color: white;
+  border-radius: 12px;
+}
 
-/* General */
+.tile-elm {
+  margin: 15px;
+  text-align: center;
+}
+
+/* GENERAL */
 
 h3 {
   color: white;
@@ -78,9 +92,11 @@ h3 {
 .btn {
   background-color: #FF4C4E !important;
   border-color: #FF4C4E !important;
+  
 }
 
-.oops-row {
+
+.title-shift {
   margin-top: 40px;
   color: white;
 }
@@ -89,4 +105,10 @@ h3 {
   margin-top: 25px;
 }
 
+.info {
+  font-family: Arial, Helvetica, sans-serif;  
+}
 
+.price {
+  font-weight: bold;
+}
