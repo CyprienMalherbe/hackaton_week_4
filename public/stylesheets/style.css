@@ -3,6 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: -moz-linear-gradient(top,  rgba(182,222,250,1) 0%, rgba(150,204,240,1) 40%, rgba(88,178,242,1) 100%); /* FF3.6-15 */
 }
+
 .container {
   
   height: 100vh;
@@ -10,24 +11,44 @@ body {
 }
 
 a {
-  color: #00B7FF;
-}
-
-.nav {
-  background-color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  color: #FF4C4E;
 }
 
 .menu {
-  display: inline;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px;
+
 }
+
+.sous-menu {
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+  height: 40px;
+}
+
+.nav-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: grey;
+}
+
+.nav-text:hover {
+  color: #FF4C4E;
+}
+
 
 .form {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+
 
 h3 {
   color: white;
