@@ -51,6 +51,8 @@ router.post('/search-result', async function(req, res, next) {
   aggregateJourney.sort({"departureTime" : -1});
   var dataJourney = await aggregateJourney.exec();
 
+console.log(dataJourney);
+
   res.render('search-result', { dataJourney });
 });
 
