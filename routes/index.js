@@ -9,24 +9,40 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/search', async function(req, res, next) {
-  var departureCity = "Marseille"; //req.body.departureCity
-  var arrivalCity = "Paris"; //req.body.arrivalCity
-  var departureDate = new Date("2018-11-23T00:00:00.000Z");
-  var departureDay = departureDate.getDate();
-  var departureMonth = departureDate.getMonth();
-  var departureYear = departureDate.getFullYear();
+  var aggregateCitiesDeparture = journeyModel.aggregate();
+  aggregateCitiesDeparture.group({
+    _id : {
+      departureCity : '$departure'
+    }
+  });
+  aggregateCitiesDeparture.sort({"_id.departureCity" : 1});
+  var dataCitiesDeparture = await aggregateCitiesDeparture.exec();
+
+  var aggregateCitiesArrival = journeyModel.aggregate();
+  aggregateCitiesArrival.group({
+    _id : {
+      arrivalCity : '$arrival'
+    }
+  });
+  aggregateCitiesArrival.sort({"_id.arrivalCity" : 1});
+  var dataCitiesArrival = await aggregateCitiesArrival.exec();
+console.log(dataCitiesDeparture);
+  res.render('search', {dataCitiesDeparture, dataCitiesArrival});
+});
+
+router.post('/result-search', async function(req, res, next) {
+  var departureCity = req.body.departureCity;
+  var arrivalCity = req.body.arrivalCity;
+  var departureDate = new Date(req.body.dateDeparture+"T00:00:00.000Z");
 
   var aggregateJourney = journeyModel.aggregate();
-
   aggregateJourney.match({"departure":departureCity, "arrival":arrivalCity, "date":departureDate});
- 
   aggregateJourney.sort({"departureTime" : -1});
-
   var dataJourney = await aggregateJourney.exec();
 
   console.log(dataJourney);
 
-  res.render('search', { dataJourney });
+  res.render('search-result', { dataJourney });
 });
 
 router.get('/oops', function(req, res, next) {
