@@ -12,15 +12,16 @@ router.get('/', function(req, res, next) {
 router.get('/search', async function(req, res, next) {
   var departureCity = "Marseille"; //req.body.departureCity
   var arrivalCity = "Paris"; //req.body.arrivalCity
-  var departureDate = "23/11/2018";
-  console.log(typeof(departureDate));
-
+  var departureDate = new Date("2018-11-23T00:00:00.000Z");
+  var departureDay = departureDate.getDate();
+  var departureMonth = departureDate.getMonth();
+  var departureYear = departureDate.getFullYear();
 
   var aggregateJourney = journeyModel.aggregate();
 
   aggregateJourney.match({"departure":departureCity, "arrival":arrivalCity, "date":departureDate});
  
-  // aggregateJourney.sort({"_id." : 1});
+  aggregateJourney.sort({"departureTime" : -1});
 
   var dataJourney = await aggregateJourney.exec();
 
