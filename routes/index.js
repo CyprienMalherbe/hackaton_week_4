@@ -3,10 +3,13 @@ var router = express.Router();
 
 var journeyModel = require('../models/journeys');
 
-/* GET home page. */
+/* ---- GET HOME PAGE ---- */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+
+/* ---- SEARCH ---- */
 
 router.get('/search', async function(req, res, next) {
   var aggregateCitiesDeparture = journeyModel.aggregate();
@@ -29,6 +32,9 @@ router.get('/search', async function(req, res, next) {
   res.render('search', {dataCitiesDeparture, dataCitiesArrival});
 });
 
+
+/* ---- SEARCH RESULTS ---- */
+
 router.post('/search-result', async function(req, res, next) {
   var departureCity = req.body.departureCity;
   var arrivalCity = req.body.arrivalCity;
@@ -45,6 +51,22 @@ router.post('/search-result', async function(req, res, next) {
 router.get('/oops', function(req, res, next) {
   res.render('oops', { title: 'Express' });
 });
+
+
+/* ---- MY TICKETS ROUTE ---- */
+
+router.get('/my-tickets', function(req, res, next) {
+  res.render('my-tickets', { title: 'Express' });
+});
+
+/* ---- LAST TRIPS ROUTE ---- */
+
+router.get('/my-last-trips', function(req, res, next) {
+  res.render('my-last-trips', { title: 'Express' });
+});
+
+
+
 
 // Cette route est juste une verification du Save.
 // Vous pouvez choisir de la garder ou la supprimer.
