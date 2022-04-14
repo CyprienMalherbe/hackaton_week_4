@@ -45,7 +45,7 @@ router.post('/sign-in', async function(req,res,next){
     // }
     res.redirect('/search')
   } else {
-    res.render('index')
+    res.redirect('/')
   }
 
   
