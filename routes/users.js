@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('sync-request');
 
 var userModel = require('../models/users');
 
@@ -19,10 +20,10 @@ router.post('/sign-up', async function(req,res,next){
   
     var newUserSave = await newUser.save();
   
-    // req.session.user = {
-    //   name: newUserSave.username,
-    //   id: newUserSave._id,
-    // }
+    req.session.user = {
+      mail: newUserSave.email,
+      id: newUserSave._id,
+    }
   
     res.redirect('/search')
   } else {
@@ -39,10 +40,10 @@ router.post('/sign-in', async function(req,res,next){
   })
 
   if(searchUser!= null){
-    // req.session.user = {
-    //   name: searchUser.username,
-    //   id: searchUser._id
-    // }
+    req.session.user = {
+      mail: searchUser.email,
+      id: searchUser._id
+    }
     res.redirect('/search')
   } else {
     res.redirect('/')

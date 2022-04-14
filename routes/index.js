@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('sync-request');
 
 var journeyModel = require('../models/journeys');
 
@@ -12,24 +13,29 @@ router.get('/', function(req, res, next) {
 /* ---- SEARCH ---- */
 
 router.get('/search', async function(req, res, next) {
-  var aggregateCitiesDeparture = journeyModel.aggregate();
-  aggregateCitiesDeparture.group({
-    _id : {
-      departureCity : '$departure'
-    }
-  });
-  aggregateCitiesDeparture.sort({"_id.departureCity" : 1});
-  var dataCitiesDeparture = await aggregateCitiesDeparture.exec();
 
-  var aggregateCitiesArrival = journeyModel.aggregate();
-  aggregateCitiesArrival.group({
-    _id : {
-      arrivalCity : '$arrival'
-    }
-  });
-  aggregateCitiesArrival.sort({"_id.arrivalCity" : 1});
-  var dataCitiesArrival = await aggregateCitiesArrival.exec();
-  res.render('search', {dataCitiesDeparture, dataCitiesArrival});
+  if(!req.session.user){
+    res.redirect('/')
+  }else{
+    var aggregateCitiesDeparture = journeyModel.aggregate();
+    aggregateCitiesDeparture.group({
+      _id : {
+        departureCity : '$departure'
+      }
+    });
+    aggregateCitiesDeparture.sort({"_id.departureCity" : 1});
+    var dataCitiesDeparture = await aggregateCitiesDeparture.exec();
+  
+    var aggregateCitiesArrival = journeyModel.aggregate();
+    aggregateCitiesArrival.group({
+      _id : {
+        arrivalCity : '$arrival'
+      }
+    });
+    aggregateCitiesArrival.sort({"_id.arrivalCity" : 1});
+    var dataCitiesArrival = await aggregateCitiesArrival.exec();
+    res.render('search', {dataCitiesDeparture, dataCitiesArrival});
+  }
 });
 
 
