@@ -30,7 +30,7 @@ console.log(dataCitiesDeparture);
   res.render('search', {dataCitiesDeparture, dataCitiesArrival});
 });
 
-router.post('/result-search', async function(req, res, next) {
+router.post('/search-result', async function(req, res, next) {
   var departureCity = req.body.departureCity;
   var arrivalCity = req.body.arrivalCity;
   var departureDate = new Date(req.body.dateDeparture+"T00:00:00.000Z");
