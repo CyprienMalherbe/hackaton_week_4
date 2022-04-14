@@ -11,18 +11,7 @@
 
 <body>
 
-  <!-- MENU NAVIGATION -->
-  <div class="menu">
-    <div class="sous-menu">
-      <img id="logo" src="/images/train.png" alt=""> <!-- logo -->
-      <a id="ticketac" class="nav-text nav-link active" href="#">Ticketac</a>
-    </div>
-
-    <div class="sous-menu">
-      <a class="nav-text nav-link" href="#">Connection</a>
-      <a class="nav-text nav-link" href="#">My last trips</a>
-    </div>
-  </div>
+  <%- include('nav-menu'); %>
 
   <!-- GRID -->
   <div class="container">
@@ -31,28 +20,18 @@
 
       <div class="col-12 offset-lg-2 col-lg-8 text-center">
 
-        <h3 class="title-shift">Tickets available on 02/08</h3>
+        <h3 class="title-shift">Tickets available on <%= dataJourney[0].date %></h3>
 
-        <div class="tile">
-          <h5 class="tile-elm">Paris/Lille</h5>
-          <p class="info tile-elm">train departure at 15:00 p.m</p>
-          <p class="price tile-elm">93€</p>
-          <a href="#" class="tile-elm btn btn-primary">Ok</a>
-        </div>
+        <% for (var i=0; i< dataJourney.length; i++) { %>
 
-        <div class="tile">
-          <h5 class="tile-elm">Paris/Lille</h5>
-          <p class="info tile-elm">train departure at 15:00 p.m</p>
-          <p class="price tile-elm">93€</p>
-          <a href="#" class="tile-elm btn btn-primary">Ok</a>
-        </div>
+          <div class="tile">
+            <h5 class="tile-elm"><%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %></h5>
+            <p class="info tile-elm">train departure at <%= dataJourney[i].departureTime %> p.m</p>
+            <p class="price tile-elm"><%= dataJourney[i].price %> € </p>
+            <a href="#" class="tile-elm btn btn-primary">Ok</a>
+          </div>
 
-        <div class="tile">
-          <h5 class="tile-elm">Paris/Lille</h5>
-          <p class="info tile-elm">train departure at 15:00 p.m</p>
-          <p class="price tile-elm">93€</p>
-          <a href="#" class="tile-elm btn btn-primary">Ok</a>
-        </div>
+          <% } %>
 
       </div>
 
