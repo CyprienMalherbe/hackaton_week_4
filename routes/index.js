@@ -74,10 +74,29 @@ router.get('/my-tickets', async function(req, res, next) {
   res.render('my-tickets', { dataJourney: req.session.trip });
 });
 
-/* ---- LAST TRIPS ROUTE ---- */
+/* ---- VALIDATED ROUTE ---- */
 
-router.get('/my-last-trips', function(req, res, next) {
-  res.render('my-last-trips', { title: 'Express' });
+router.get('/validated', async function(req, res, next) {
+
+  await userModel.updateOne(
+    { _id : req.session.user.id},
+    { $push: { userJourneys: { $each: req.session.trip }}}
+ );
+
+  res.render('validated');
+});
+
+
+router.get('/my-last-trips', async function(req, res, next) {
+
+//   await userModel.updateOne(
+//     { _id : req.session.user.id},
+//     { $push: { userJourneys: { $each: req.session.trip }}}
+//  );
+
+  var data = await userModel.findById(req.session.user.id).populate('userJourneys');
+
+  res.render('my-last-trips', { data });
 });
 
 
