@@ -32,25 +32,16 @@
               </tr>
             </thead>
             <tbody>
+              <% for (var i=0; i<data.userJourneys.length; i++) { %>
               <tr>
-                <td>Paris/Lille</td>
-                <td>02/08/2022</td>
-                <td>09h15</td>
-                <td class="price">93€</td>
+                <td><%= data.userJourneys[i].departure %> / <%= data.userJourneys[i].arrival %></td>
+                <td><%= dateFormat(data.userJourneys[i].date) %></td>
+                <td><%= data.userJourneys[i].departureTime %></td>
+                <td class="price"><%= data.userJourneys[i].price %>€</td>
+             
 
               </tr>
-              <tr>
-                <td>Paris/Lille</td>
-                <td>02/08/2022</td>
-                <td>09h15</td>
-                <td class="price">93€</td>
-              </tr>
-              <tr>
-                <td>Paris/Lille</td>
-                <td>02/08/2022</td>
-                <td>09h15</td>
-                <td class="price">93€</td>
-              </tr>
+            <% } %>              
             </tbody>
           </table>
 
