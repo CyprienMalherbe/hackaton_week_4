@@ -13,34 +13,41 @@
 
   <%- include('nav-menu'); %>
 
-  <!-- GRID -->
-  <div class="container">
+    <!-- GRID -->
+    <div class="container">
 
-    <div class="row">
+      <div class="row">
 
-      <div class="col-12 offset-lg-2 col-lg-8 text-center">
+        <div class="col-12 offset-lg-2 col-lg-8 text-center">
 
-        <h3 class="title-shift">Tickets available on <%= dateFormat(dataJourney[0].date) %></h3>
+          <h3 class="title-shift">Tickets available on <%= dateFormat(dataJourney[0].date) %>
+          </h3>
 
-        <% for (var i=0; i< dataJourney.length; i++) { %>
+          <% for (var i=0; i< dataJourney.length; i++) { %>
 
-          <div class="tile">
-            <h5 class="tile-elm"><%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %></h5>
-            <p class="info tile-elm">train departure at <%= dataJourney[i].departureTime %> p.m</p>
-            <p class="price tile-elm"><%= dataJourney[i].price %> € </p>
-            <a href="/my-tickets?id=<%=dataJourney[i]._id%>" class="tile-elm btn btn-primary">Ok</a>
-          </div>
+            <div class="tile col-12 col-lg-10 offset-lg-1 text-center">
+              <h5 class="tile-elm">
+                <%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %>
+              </h5>
+              <p class="info tile-elm">train departure at <%= dataJourney[i].departureTime %> p.m</p>
+              <p class="price tile-elm">
+                <%= dataJourney[i].price %> €
+              </p>
+              <a href="/my-tickets?id=<%=dataJourney[i]._id%>" class="tile-elm btn btn-primary">Add</a>
+            </div>
 
-        <% } %>
-
-      </div>
-
-
-    </div> <!-- close main row -->
-  </div> <!-- close container -->
+            <% } %>
+              <div class="col-12 offset-lg-8 col-lg-2 validate-btn">
+                <a href="" class="tile-elm btn btn-primary">Go to my cart</a>
+              </div>
+        </div>
 
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      </div> <!-- close main row -->
+    </div> <!-- close container -->
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>

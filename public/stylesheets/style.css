@@ -111,6 +111,12 @@ h3 {
   margin-top: 25px;
 }
 
+/* .validate-btn {
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+} */
+
 .info {
   font-family: Arial, Helvetica, sans-serif;  
 }
@@ -128,7 +134,7 @@ h3 {
 }
 
 .total {
-  background-color: #fb8789;
+  background-color: #f6a0a2;
   
 }
 
