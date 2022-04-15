@@ -3,6 +3,8 @@ var router = express.Router();
 var request = require('sync-request');
 
 var journeyModel = require('../models/journeys');
+var userModel = require('../models/users');
+
 
 /* ---- GET HOME PAGE ---- */
 router.get('/', function(req, res, next) {
@@ -51,9 +53,12 @@ router.post('/search-result', async function(req, res, next) {
   aggregateJourney.sort({"departureTime" : -1});
   var dataJourney = await aggregateJourney.exec();
 
-console.log(dataJourney);
+  if (dataJourney.length > 0) {
+    res.render('search-result', { dataJourney });
+  } else {
+    res.redirect('/oops');
+  }
 
-  res.render('search-result', { dataJourney });
 });
 
 router.get('/oops', function(req, res, next) {
@@ -61,10 +66,12 @@ router.get('/oops', function(req, res, next) {
 });
 
 
-/* ---- MY TICKETS ROUTE ---- */
+/* ---- TICKETS ROUTE ---- */
 
-router.get('/my-tickets', function(req, res, next) {
-  res.render('my-tickets', { title: 'Express' });
+router.get('/my-tickets', async function(req, res, next) {
+  var addTrip = await journeyModel.findById(req.query.id);
+  req.session.trip.push(addTrip)
+  res.render('my-tickets', { dataJourney: req.session.trip });
 });
 
 /* ---- LAST TRIPS ROUTE ---- */

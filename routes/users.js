@@ -24,6 +24,7 @@ router.post('/sign-up', async function(req,res,next){
       mail: newUserSave.email,
       id: newUserSave._id,
     }
+    req.session.trip = [];
   
     res.redirect('/search')
   } else {
@@ -44,6 +45,7 @@ router.post('/sign-in', async function(req,res,next){
       mail: searchUser.email,
       id: searchUser._id
     }
+    req.session.trip = [];
     res.redirect('/search')
   } else {
     res.redirect('/')

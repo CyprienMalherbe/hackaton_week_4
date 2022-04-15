@@ -28,10 +28,10 @@
             <h5 class="tile-elm"><%= dataJourney[i].departure %> / <%= dataJourney[i].arrival %></h5>
             <p class="info tile-elm">train departure at <%= dataJourney[i].departureTime %> p.m</p>
             <p class="price tile-elm"><%= dataJourney[i].price %> € </p>
-            <a href="#" class="tile-elm btn btn-primary">Ok</a>
+            <a href="/my-tickets?id=<%=dataJourney[i]._id%>" class="tile-elm btn btn-primary">Ok</a>
           </div>
 
-          <% } %>
+        <% } %>
 
       </div>
 
